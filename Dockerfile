@@ -3,7 +3,6 @@ FROM plone/frontend-builder:18 AS builder
 
 # Build Volto Project and then remove directories not needed for production
 COPY pnpm-workspace.yaml /app/
-COPY volto.config.js /app/
 RUN --mount=type=cache,id=pnpm,target=/app/.pnpm-store,uid=1000 <<EOT
     set -e
     pnpm build
@@ -11,6 +10,8 @@ RUN --mount=type=cache,id=pnpm,target=/app/.pnpm-store,uid=1000 <<EOT
     rm -rf node_modules
     pnpm install --prod
 EOT
+
+COPY volto.config.js /app/
 
 FROM plone/frontend-prod-config:18 AS base
 
