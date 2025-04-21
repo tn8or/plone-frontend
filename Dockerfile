@@ -6,7 +6,7 @@ COPY pnpm-workspace.yaml /app/
 RUN --mount=type=cache,id=pnpm,target=/app/.pnpm-store,uid=1000 <<EOT
     set -e
     pnpm build
-    ( cd /app/core/packages/volto && pnpm install @eeacms/volto-industry-theme )
+    ( cd /app/core/packages/volto && pnpm install -P @eeacms/volto-industry-theme )
     rm -rf node_modules
     pnpm install --prod
 EOT
