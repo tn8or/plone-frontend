@@ -1,0 +1,1 @@
+Grabbed dockerfile form https://github.com/plone/plone-frontend/blob/18.x/pnpm/Dockerfile
